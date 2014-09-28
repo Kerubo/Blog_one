@@ -1,5 +1,5 @@
     <?php
-   
+    //file: app/controllers/CommentsController.php
      
     class CommentController extends BaseController {
      

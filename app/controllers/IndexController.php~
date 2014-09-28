@@ -9,7 +9,6 @@ return View::make('index');
 }
  
 //file: app/routes.php
-remember to register all the controllers
 //registering route to controller actions
  
 Route::get('index','IndexController@showIndex');

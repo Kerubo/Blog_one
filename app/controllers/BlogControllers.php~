@@ -24,11 +24,10 @@ $searchTerm = Input::get('s');
 $posts = Post::whereRaw('match(title,content) against(? in boolean mode)',[$searchTerm])
 ->paginate(10);
 
-$posts->getPosts()->setViewName('pagination::slider');
+$posts->getEnvironment()->setViewName('pagination::slider');
 $posts->appends(['s'=>$searchTerm]);
 $this->layout->with('title','Search: '.$searchTerm);
 $this->layout->main = View::make('home')
-
 ->nest('content','index',($posts->isEmpty()) ? ['notFound' => true ] : compact('name'));
 }
  
@@ -45,7 +44,7 @@ $credentials = [
 'password'=>Input::get('password')
 ];
 $rules = [
-'username' => 'required |unique ',
+'username' => 'required',
 'password'=>'required'
 ];
 $validator = Validator::make($credentials,$rules);
